@@ -1,1 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int ler_notas();
+int media(float aluno[]);
+int nota_hl(float aluno[]);
+int passaounao(float aluno[]);
+
+//-------------------------------------------------
+int main()
+{
+    float aluno[5];
+
+    ler_notas(aluno);
+    media(aluno);
+    nota_hl(aluno);
+    passaounao(aluno);
+
+    printf("\n\n\n\n\n\n\n\n");
+    return 0;
+}
+//---------------------------------------------------
+int ler_notas(float aluno[])
+{
+    int i,ans;
+
+     for(i=0;i<5;i++)
+    {
+        aluno[i]=0;
+    }
+        i=0;
+        do{
+            printf("Insira a nota do aluno %d: ",i+1);
+            scanf("%f",&aluno[i]);
+            printf("Quer continuar (0-sim 1-nao): ");
+            scanf("%d",&ans);
+            i++;
+        }while(ans!=1 && i<5);
+
+        for(i=0;i<5;i++)
+        {
+            if(aluno[i]>0){printf("\nNota Aluno %d: %.2f",i+1,aluno[i]);}
+        }
+}
+//-------------------------------------------------------
+int media(float aluno[])
+{
+    int i;
+    float somatorio=0,media;
+
+    for(i=0;i<5;i++)
+    {
+     somatorio=somatorio + aluno[i];
+    }
+    media = somatorio/5;
+    printf("\n\nMedia da Turma:%.2f",media);
+}
+//---------------------------------------------------
+int nota_hl(float aluno[])
+{
+    int i;
+    float high=0,low;
+
+    for(i=0;i<5;i++)
+    {
+     if(aluno[i]>=aluno[i-1]){high=aluno[i];}
+    }
+    printf("\n\nNota + alta = %.2f",high);
+
+    for(i=0;i<5;i++)
+    {
+     if(aluno[i]<=aluno[i-1]){low=aluno[i];}
+    }
+    printf("\n\nNota + baixo = %.2f\n",low);
+}
+
+//-------------------------------------------------------
+int passaounao(float aluno[])
+{
+    int i;
+
+    for(i=0;i<5;i++)
+    {
+     if(aluno[i]>=9.5){printf("\nAluno %d - Passou com %.2f",i+1,aluno[i]);}
+        if(aluno[i]<9.5){printf("\nAluno %d - Chumbou com %.2f",i+1,aluno[i]);}
+    }
+
+}
 
