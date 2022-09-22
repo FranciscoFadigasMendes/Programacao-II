@@ -61,9 +61,6 @@ public class Folha_1 {
            }
         }while(x==1);
      
-    }
-        
-        
-        
-    }
+    }    
+  }
 }
