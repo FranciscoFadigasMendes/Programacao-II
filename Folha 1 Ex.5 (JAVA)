@@ -1,0 +1,69 @@
+/*
+5. Escreva um programa que simule uma calculadora rudimentar, cujas operações possíveis 
+sejam: 
+• + (soma) 
+• - (subtracção) 
+• x (multiplicação) 
+• / (divisão) 
+O programa deverá pedir ao utilizador dois números inteiros e o sinal de operação a aplicar a 
+esses números. Deverá, por fim, apresentar no monitor, o respetivo resultado.
+
+Notas: Caso o utilizador selecione um operador fora das possibilidades atrás mencionadas, 
+deverá ser dada ao utilizador a mensagem: “operador desconhecido”. 
+O programa deve indicar “Erro – divisão por zero” se numa divisão o divisor for zero.*/
+
+package com.mycompany.folha_1;
+import java.util.Scanner;
+
+public class Folha_1 {
+
+    public static void main(String[] args) {
+        System.out.println("Isto é uma calculadora!");
+        
+        Scanner num1 = new Scanner(System.in);
+        System.out.print("Digite um número inteiro:");
+        int a = num1.nextInt();
+        
+        Scanner num2 = new Scanner(System.in);
+        System.out.print("Digite outro número inteiro:");
+        int b = num2.nextInt();
+        
+        System.out.println("\nTeste:");
+        System.out.println("Numero 1= " + a);
+        System.out.println("Numero 2= " + b);
+
+        Scanner sinal = new Scanner(System.in);
+        System.out.print("Digite o Sinal(+)(-)(*)(/):");
+        String c = sinal.nextLine();
+        
+        int x=0;
+        do{
+           switch(c){
+               case "+":
+                  d = a + b;
+                  System.out.print("Resultado:" + d);
+                break;
+               case "-":
+                  d = a - b;
+                  System.out.print("Resultado:" + d);
+                break;
+               case "*":
+                  d = a * b;
+                  System.out.print("Resultado:" + d);
+                break;
+               case "/":
+                  d = a / b;
+                  System.out.print("Resultado:" + d);
+                break; 
+               
+               default:
+                   x=1;
+           }
+        }while(x==1);
+     
+    }
+        
+        
+        
+    }
+}
