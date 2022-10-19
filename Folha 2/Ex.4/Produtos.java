@@ -2,21 +2,39 @@ package com.mycompany.aplicacao;
 
 public class Produtos {
     
-    static String id;
-    static String nome;
-    static int stock;
+    //ATRIBUTOS
+    private String id;
+    private String nome;
+    private int stock;
     
-    public static void acederClasse(){
-        System.out.println("ACEDI À CLASSE PRODUTOS");
-    }
-    
-
-   public static void newProduto(String new_id,String new_nome,int new_stock){
+    //CONSTRUTOR
+   public  Produtos(String id,String nome,int stock){
   
-        new_id = id;
-        new_nome = nome;
-        new_stock = stock;
-              
+        this.id = id;
+        this.nome = nome;
+        this.stock = stock;
+       
+    }
+
+    /**
+     * @return the id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @return the stock
+     */
+    public int getStock() {
+        return stock;
     }
 
     
