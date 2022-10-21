@@ -2,15 +2,16 @@ package com.mycompany.aplicacao;
 import java.util.Scanner;
 
 public class Aplicacao {
-static Produtos p[];
+static final int MAX_PRODUTOS = 10;
+static Produtos p[] = new Produtos[MAX_PRODUTOS];
 static int num_prod[];
 
 
     public static void main(String[] args) {
-        int ans = 1;
-        
+
         //LAYOUT DO MENU
         System.out.println("\nBEM-VINDO AO GESTOR DE PRODUTOS:\n");
+        System.out.println("NOTA:Existem "+ p_counter +" produtos\n");
         System.out.print("->Adicionar um Produto (1)");
         System.out.println("\t\t->Eliminar um Produto (2)");
         System.out.print("->Consultar um Produto (3)");
@@ -22,6 +23,7 @@ static int num_prod[];
         Scanner opcao = new Scanner(System.in);
         System.out.print("\n Indique a sua opção: ");
         int opc = opcao.nextInt();
+       
    
         System.out.print("\n");
         //----------------------------------------------------------------
@@ -29,31 +31,32 @@ static int num_prod[];
             switch(opc) {
                 case 1:
                     adicionar_produto();
+                    p_counter ++;
                     main(args);
                 case 2:
                     eliminar_produto();
+                    p_counter --;
                     main(args);
                 case 3:
                      consultar_produto();
-                    main(args);
+                     main(args);
                 case 4:
                      listar_produto();
-                    main(args);
+                     main(args);
                 case 5:
                      alterar_nome_produto();
-                    main(args);
+                     main(args);
                 case 6:
                      alterar_stock_produto();
-                    main(args);
+                     main(args);
                  
                 default:
-                        ans = 0;}
+                                    }
             
     }    
   //--------------------------------------------------------------------------      
     public static void adicionar_produto(){
         System.out.print("\nFunção: adicionar_produto\n");
-        
         
         Scanner answer = new Scanner(System.in);
         System.out.print("Quantos produtos pretende criar? --> ");
@@ -101,7 +104,7 @@ static int num_prod[];
       System.out.print("\nFunção: listar_produto\n");
       
       //MOSTRA VALORES GUARDADOS
-        for(int i=0;i<num_prod[0];i++){       
+        for(int i=0;i<p_counter;i++){       
             System.out.println("ID Nº" + (i+1) + "-->"+ p[i].getId());
             System.out.println("Nome Nº" + (i+1) + "-->"+ p[i].getNome());
             System.out.println("Stock Nº" + (i+1) + "-->"+ p[i].getStock());
