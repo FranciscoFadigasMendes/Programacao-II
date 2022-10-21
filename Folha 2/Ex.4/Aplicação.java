@@ -1,14 +1,16 @@
 package com.mycompany.aplicacao;
 import java.util.Scanner;
 
+
 public class Aplicacao {
-static final int MAX_PRODUTOS = 10;
-static Produtos p[] = new Produtos[MAX_PRODUTOS];
-static int num_prod[];
+    static final int MAX_PRODUTOS = 10;
+    static Produtos p[] = new Produtos[MAX_PRODUTOS];
+    static int num_prod[];
+    static int p_counter = 0;
 
 
     public static void main(String[] args) {
-
+        
         //LAYOUT DO MENU
         System.out.println("\nBEM-VINDO AO GESTOR DE PRODUTOS:\n");
         System.out.println("NOTA:Existem "+ p_counter +" produtos\n");
@@ -58,12 +60,11 @@ static int num_prod[];
     public static void adicionar_produto(){
         System.out.print("\nFunção: adicionar_produto\n");
         
+        
         Scanner answer = new Scanner(System.in);
         System.out.print("Quantos produtos pretende criar? --> ");
         num_prod[0] = answer.nextInt();
-         
-        Produtos p[] = new Produtos[num_prod[0]];
-        
+            
         for(int i=0;i<num_prod[0];i++){
         //PEDE O ID
         Scanner p_1 = new Scanner(System.in);
@@ -81,7 +82,7 @@ static int num_prod[];
         int p_stock = p_3.nextInt(); 
         
         //CRIA OBJETO DO CONSTRUTOR COM OS ATRIBUTOS PEDIDOS ACIMA 
-        p[i] = new Produtos(p_id,p_nome,p_stock);
+        p[num_prod[0]] = new Produtos(p_id,p_nome,p_stock);
        
         System.out.print("\n\n");
         }
