@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Aplicacao {
     static final int MAX_PRODUTOS = 10;
     static Produtos p[] = new Produtos[MAX_PRODUTOS];
-    static int num_prod[];
+    static int num_prod[]= new int[MAX_PRODUTOS];
     static int p_counter = 0;
 
 
@@ -13,7 +13,7 @@ public class Aplicacao {
         
         //LAYOUT DO MENU
         System.out.println("\nBEM-VINDO AO GESTOR DE PRODUTOS:\n");
-        System.out.println("NOTA:Existem "+ p_counter +" produtos\n");
+        System.out.println("NOTA: Existem "+ p_counter +" produtos\n");
         System.out.print("->Adicionar um Produto (1)");
         System.out.println("\t\t->Eliminar um Produto (2)");
         System.out.print("->Consultar um Produto (3)");
@@ -33,11 +33,9 @@ public class Aplicacao {
             switch(opc) {
                 case 1:
                     adicionar_produto();
-                    p_counter ++;
                     main(args);
                 case 2:
                     eliminar_produto();
-                    p_counter --;
                     main(args);
                 case 3:
                      consultar_produto();
@@ -53,12 +51,15 @@ public class Aplicacao {
                      main(args);
                  
                 default:
+                    main(args);
                                     }
             
     }    
   //--------------------------------------------------------------------------      
     public static void adicionar_produto(){
         System.out.print("\nFunção: adicionar_produto\n");
+        System.out.println("p_counter = " + p_counter);
+        System.out.println("\n");
         
         
         Scanner answer = new Scanner(System.in);
@@ -66,6 +67,7 @@ public class Aplicacao {
         num_prod[0] = answer.nextInt();
             
         for(int i=0;i<num_prod[0];i++){
+            
         //PEDE O ID
         Scanner p_1 = new Scanner(System.in);
         System.out.print("Insira o ID do Produto " + (i+1) + ":");
@@ -81,35 +83,70 @@ public class Aplicacao {
         System.out.print("Insira o Stock do Produto " + (i+1) + ":");
         int p_stock = p_3.nextInt(); 
         
-        //CRIA OBJETO DO CONSTRUTOR COM OS ATRIBUTOS PEDIDOS ACIMA 
-        p[num_prod[0]] = new Produtos(p_id,p_nome,p_stock);
-       
-        System.out.print("\n\n");
-        }
-    
+        //CRIA OBJETO DO CONSTRUTOR COM OS ATRIBUTOS PEDIDOS ACIMA         
+        p[p_counter] = new Produtos(p_id,p_nome,p_stock);
+        p_counter ++;
         
+         System.out.print("\n\n");
+        }
+             
     }
+    
 //--------------------------------------------------------------------------  
     public static void eliminar_produto(){
       System.out.print("\nFunção: eliminar_produto\n");
       
+       Scanner id_ask = new Scanner(System.in);
+      System.out.println("Qual é o ID do Produto a Eliminar: ");
+      String find_id = id_ask.nextLine();
+      
+        for(int i=0;i<p_counter;i++){
+            
+            if( find_id.compareToIgnoreCase(p[i].getId()) == 0){
+                p[i].getId() = 0;
+                p[i].getNome() = 0;
+                p[i].getStock() = 0;
+            }
+            
+      p_counter --;
     }
 //--------------------------------------------------------------------------  
     public static void consultar_produto(){
-      System.out.print("\nFunção: consultar_produto\n"); 
-                  
-
+      System.out.print("\nFunção: consultar_produto\n");
+      System.out.println("p_counter = " + p_counter);
+      System.out.println("\n");
+      
+      
+      Scanner id_ask = new Scanner(System.in);
+      System.out.println("Qual é o ID do Produto a Consultar: ");
+      String find_id = id_ask.nextLine();
+      
+        for(int i=0;i<p_counter;i++){
+            
+            if( find_id.compareToIgnoreCase(p[i].getId()) == 0){
+                System.out.println("ID Nº" + (i+1) + "-->"+ p[i].getId());
+                System.out.println("Nome Nº" + (i+1) + "-->"+ p[i].getNome());
+                System.out.println("Stock Nº" + (i+1) + "-->"+ p[i].getStock());
+                System.out.print("\n");
+            }
+                
+        }
+                 
     }
 //-------------------------------------------------------------------------- 
      public static void listar_produto(){
       System.out.print("\nFunção: listar_produto\n");
+      System.out.println("p_counter = " + p_counter);
+      System.out.println("\n");
       
       //MOSTRA VALORES GUARDADOS
-        for(int i=0;i<p_counter;i++){       
+        for(int i=0;i<p_counter;i++){
+            
             System.out.println("ID Nº" + (i+1) + "-->"+ p[i].getId());
             System.out.println("Nome Nº" + (i+1) + "-->"+ p[i].getNome());
             System.out.println("Stock Nº" + (i+1) + "-->"+ p[i].getStock());
             System.out.print("\n");
+            
         }
       
     }
