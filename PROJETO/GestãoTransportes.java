@@ -2,8 +2,11 @@ package gestãotransportes;
 import util.Consola;
 
 public class GestãoTransportes {
+    
+  static Empresa e[] = new Empresa[100];
+  static int e_counter = 0;
+    
 
- 
     public static void main(String[] args) {
        
         int a = 0;
@@ -26,7 +29,6 @@ public class GestãoTransportes {
             switch(opc) {
                 case 1:
                     manageEmpresa();
-                    System.out.println("opc1");
                     main(args);
                 case 2:
                     System.out.println("opc2");
@@ -89,9 +91,29 @@ public class GestãoTransportes {
             }
         }     
     }
-  //--------------------------------------------------------------------------      
-    
-   public static void manageEmpresa(){
-     
+  //--------------------------------------------------------------------------          
+    public static void manageEmpresa(){
+        
+        //PEDE O NOME
+        String e_Nome = Consola.lerString("Escreva o Nome da Empresa: ");
+        //PEDE A MORADA
+        String e_Morada = Consola.lerString("Escreva a Morada da Empresa: ");
+        //PEDE O NIF
+        int e_NIF = Consola.lerInt("Digite o NIF da Empresa: ", 100000000, 1000000000);
+        
+        //CRIA OBJETO DO CONSTRUTOR COM OS ATRIBUTOS PEDIDOS ACIMA         
+        e[e_counter] = new Empresa(e_NIF,e_Nome,e_Morada);
+        e_counter ++;
+        
+        //MOSTRA VALORES GUARDADOS
+        for(int i=0;i<e_counter;i++){
+
+            System.out.println("ID Nº" + (i+1) + "-->"+ e[i].getNIF());
+            System.out.println("Nome Nº" + (i+1) + "-->"+ e[i].getNome());
+            System.out.println("Stock Nº" + (i+1) + "-->"+ e[i].getMorada());
+            System.out.print("\n");
+        }
+        
     }
+  //--------------------------------------------------------------------------    
 }
