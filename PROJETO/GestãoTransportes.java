@@ -1,12 +1,17 @@
 package gestãotransportes;
 import util.Consola;
+import java.util.Scanner;
+import static util.Consola.sc;
 
 public class GestãoTransportes {
     
+  public static Scanner sc = new Scanner(System.in);
+  
   static Empresa e[] = new Empresa[100];
-  static int e_counter = 0;
-    
-
+  static Motorista m[] = new Motorista[1000];
+  
+  static int e_counter = 0, m_counter = 0;
+  
     public static void main(String[] args) {
        
         int a = 0;
@@ -31,7 +36,7 @@ public class GestãoTransportes {
                     manageEmpresa();
                     main(args);
                 case 2:
-                    System.out.println("opc2");
+                    manageMotorista();
                     main(args);
                 case 3:
                     System.out.println("opc3");
@@ -91,7 +96,9 @@ public class GestãoTransportes {
             }
         }     
     }
-  //--------------------------------------------------------------------------          
+    
+  //--------------------------------------------------------------------------  
+    
     public static void manageEmpresa(){
         
         System.out.println("\n\n");
@@ -136,6 +143,75 @@ public class GestãoTransportes {
                     break;
         }
     }
+    
+    //--------------------------------------------------------------------------  
+    
+    public static void manageMotorista(){
         
+        System.out.println("\n\n");
+        System.out.println("1. Criar Motorista");
+        System.out.println("2. Procurar Motorista");
+        System.out.println("3. Sair");
+        
+        int opc = Consola.lerInt("\n Indique a sua opção: ", 1, 3);
+        System.out.print("\n");       
+    
+            switch(opc) {
+                
+                case 1:
+                    //PEDE O NOME
+                    String m_Nome = Consola.lerString("Escreva o Nome do Motorista: ");
+                    //PEDE A MORADA
+                    String m_Morada = Consola.lerString("Escreva a Morada do Mototrista: ");
+                    //PEDE O Telefone
+                    int m_Telefone = Consola.lerInt("Digite o Telefone do Mototrista: ", 910000000, 969999999);
+                    //PEDE O NIF
+                    int m_NIF = Consola.lerInt("Digite o NIF da Mototrista: ", 100000000, 999999999);
+                    //PEDE A Empresa
+                    int x=1;
+                    String m_Empresa ="Desempregado";
+                    do{
+                        m_Empresa = Consola.lerString("Digite a Empresa do Motorista que pretende: ");
+                        for(int i=0;i<e_counter;i++){
+                            if( m_Empresa.compareToIgnoreCase(e[i].getNome()) == 0){
+                                x=1;
+                            }
+                        }
+                        }while(x==0);
+                    //PEDE A Habilitação
+                    String m_Habilitação = Consola.lerString("Digite a Habilitação do Condutor: ");
+                    //PEDE A Data
+                    int dia = Consola.lerInt("Digite o dia de nascimento: ", 1, 31);
+                    int mes = Consola.lerInt("Digite o mes de nascimento: ", 1, 12);
+                    int ano = Consola.lerInt("Digite o ano de nascimento: ", 1900, 2100);
+                    
+                    String m_Data = "" + dia +"/"+ mes +"/"+ ano;
+                    
+                    //CRIA OBJETO DO CONSTRUTOR COM OS ATRIBUTOS PEDIDOS ACIMA         
+                    m[m_counter] = new Motorista(m_NIF, m_Nome, m_Morada, m_Telefone,m_Habilitação, m_Empresa, m_Data);
+                    m_counter ++;
+                    System.out.println(m_Data);
+                    break;
+                case 2:
+                    int find_NIF = Consola.lerInt("Digite o NIF do Motorista que pretende: ",100000000, 1000000000);
+                    for(int i=0;i<m_counter;i++){
+                        if(m[i].getNIF() == find_NIF){
+                            System.out.println("Nome do Motorista -> " + m[i].getNome());
+                            System.out.println("NIF do Motorista -> " + m[i].getNIF());
+                            System.out.println("Morada do Motorista -> " + m[i].getMorada());
+                            System.out.println("Telefone do Motorista -> " + m[i].getTelefone());
+                            System.out.println("Empresa do Motorista -> " + m[i].getEmpresa());
+                            System.out.println("Data de nascimento do Motorista -> " + m[i].getData());
+                            System.out.println("Habilitação do Motorista -> " + m[i].getHabilitação());
+                            System.out.print("\n"); }
+                        }  
+                    
+                case 3:
+                    break;
+                    
+                default:
+                    break;
+        }
+    }
   //--------------------------------------------------------------------------    
 }
