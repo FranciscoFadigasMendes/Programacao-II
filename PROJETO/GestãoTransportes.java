@@ -5,7 +5,7 @@ public class GestãoTransportes {
 
  
     public static void main(String[] args) {
-        
+        int a = 0;
         //LAYOUT DO MENU
         System.out.println("\nBEM-VINDO AO GESTOR DE TRANSPORTES:\n");
         
@@ -20,10 +20,10 @@ public class GestãoTransportes {
                
         //----------------------------------------------------------------
         
-        Scanner opcao = new Scanner(System.in);
-        System.out.print("\n Indique a sua opção: ");
-        int opc = opcao.nextInt();
-       
+//        Scanner opcao = new Scanner(System.in);
+//        System.out.print("\n Indique a sua opção: ");
+//        int opc = opcao.nextInt();
+        int opc = Consola.lerInt("\n Indique a sua opção: ", 1, 7);
         System.out.print("\n");
 
 
@@ -41,15 +41,15 @@ public class GestãoTransportes {
                 case 6:
                      
                 case 7:
-                   
+                    a = 1;
                 default:
                     main(args);
                                     }
             
-    }    
+   
   //--------------------------------------------------------------------------
     
-    if(int a == 1){
+    if( a == 1){
         //LAYOUT DO SUB-MENU
         System.out.println("\nSUB-MENU:\n");    
     
@@ -62,10 +62,10 @@ public class GestãoTransportes {
         System.out.println("7. Voltar ao Menu Principal");
         System.out.print("---------------------------------------------------------------------");    
     
-         Scanner opcao2 = new Scanner(System.in);
-        System.out.print("\n Indique a sua opção: ");
-        int opc2 = opcao2.nextInt();
-       
+//         Scanner opcao2 = new Scanner(System.in);
+//        System.out.print("\n Indique a sua opção: ");
+//        int opc2 = opcao2.nextInt();
+       int opc2 = Consola.lerInt("\n Indique a sua opção: ", 1, 7);
         System.out.print("\n");       
     
             switch(opc2) {
@@ -90,6 +90,6 @@ public class GestãoTransportes {
 }          
   //--------------------------------------------------------------------------      
     
-    
+    }
     
 }
