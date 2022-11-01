@@ -25,6 +25,7 @@ public class GestãoTransportes {
             
             switch(opc) {
                 case 1:
+                    manageEmpresa();
                     System.out.println("opc1");
                     main(args);
                 case 2:
@@ -90,5 +91,7 @@ public class GestãoTransportes {
     }
   //--------------------------------------------------------------------------      
     
-    
+   public static void manageEmpresa(){
+     
+    }
 }
