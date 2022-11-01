@@ -95,19 +95,21 @@ public class Aplicacao {
 //--------------------------------------------------------------------------  
     public static void eliminar_produto(){
       System.out.print("\nFunção: eliminar_produto\n");
+      int a=0;
       
-       Scanner id_ask = new Scanner(System.in);
+      Scanner id_ask = new Scanner(System.in);
       System.out.println("Qual é o ID do Produto a Eliminar: ");
       String find_id = id_ask.nextLine();
       
         for(int i=0;i<p_counter;i++){
+            if( find_id.compareToIgnoreCase(p[i].getId()) == 0) 
+                a = i;
+        }
+        System.out.println("a = "+ a);
             
-            if( find_id.compareToIgnoreCase(p[i].getId()) == 0){
-                p[i].getId() = 0;
-                p[i].getNome() = 0;
-                p[i].getStock() = 0;
+            for(int x=a;x<p_counter;x++){
+                p[x]=p[x+1];           
             }
-            
       p_counter --;
     }
 //--------------------------------------------------------------------------  
@@ -141,7 +143,7 @@ public class Aplicacao {
       
       //MOSTRA VALORES GUARDADOS
         for(int i=0;i<p_counter;i++){
-            
+
             System.out.println("ID Nº" + (i+1) + "-->"+ p[i].getId());
             System.out.println("Nome Nº" + (i+1) + "-->"+ p[i].getNome());
             System.out.println("Stock Nº" + (i+1) + "-->"+ p[i].getStock());
