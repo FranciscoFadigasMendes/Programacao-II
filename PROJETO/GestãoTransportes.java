@@ -22,23 +22,30 @@ public class GestãoTransportes {
         int opc = Consola.lerInt("\n Indique a sua opção: ", 1, 7);
         System.out.print("\n");
 
-
+            
             switch(opc) {
                 case 1:
                     System.out.println("opc1");
+                    main(args);
                 case 2:
-                   System.out.println("opc2");
+                    System.out.println("opc2");
+                    main(args);
                 case 3:
-                     System.out.println("opc3");
+                    System.out.println("opc3");
+                    main(args);
                 case 4:
-                     System.out.println("opc4");
+                    System.out.println("opc4");
+                    main(args);
                 case 5:
-                     System.out.println("opc5");
+                    System.out.println("opc5");
+                    main(args);
                 case 6:
-                     System.out.println("opc6");
+                    System.out.println("opc6");
+                    main(args);
                 case 7:
                     System.out.println("opc7");
                     a = 1;
+                    break;
                 default:
                     main(args);
                                     }
@@ -63,20 +70,19 @@ public class GestãoTransportes {
     
             switch(opc2) {
                 case 1:
-                    
-                case 2:
-                   
-                case 3:
-                     
-                case 4:
-                     
-                case 5:
-                     
-                case 6:
-                     
-                case 7:
                     main(args);
-                                     
+                case 2:
+                    main(args);
+                case 3:
+                    main(args);
+                case 4:
+                    main(args);
+                case 5:
+                    main(args);
+                case 6:
+                    main(args);
+                case 7:
+                    main(args);           
                 default:
                     main(args);
             }
