@@ -8,13 +8,13 @@ public class Produtos {
     private int stock;
     
     //CONSTRUTOR
-   public  Produtos(String id,String nome,int stock){
+   public  Produtos(String id, String nome, int stock){
   
         this.id = id;
         this.nome = nome;
         this.stock = stock;
-       
     }
+   
 
     /**
      * @return the id
