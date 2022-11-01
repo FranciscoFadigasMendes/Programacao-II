@@ -94,26 +94,48 @@ public class GestãoTransportes {
   //--------------------------------------------------------------------------          
     public static void manageEmpresa(){
         
-        //PEDE O NOME
-        String e_Nome = Consola.lerString("Escreva o Nome da Empresa: ");
-        //PEDE A MORADA
-        String e_Morada = Consola.lerString("Escreva a Morada da Empresa: ");
-        //PEDE O NIF
-        int e_NIF = Consola.lerInt("Digite o NIF da Empresa: ", 100000000, 1000000000);
+        System.out.println("\n\n");
+        System.out.println("1. Criar Empresa");
+        System.out.println("2. Procurar Empresa");
+        System.out.println("3. Sair");
         
-        //CRIA OBJETO DO CONSTRUTOR COM OS ATRIBUTOS PEDIDOS ACIMA         
-        e[e_counter] = new Empresa(e_NIF,e_Nome,e_Morada);
-        e_counter ++;
-        
-        //MOSTRA VALORES GUARDADOS
-        for(int i=0;i<e_counter;i++){
 
-            System.out.println("ID Nº" + (i+1) + "-->"+ e[i].getNIF());
-            System.out.println("Nome Nº" + (i+1) + "-->"+ e[i].getNome());
-            System.out.println("Stock Nº" + (i+1) + "-->"+ e[i].getMorada());
-            System.out.print("\n");
-        }
+        int opc = Consola.lerInt("\n Indique a sua opção: ", 1, 3);
+        System.out.print("\n");       
+    
+            switch(opc) {
+                
+                case 1:
+                    //PEDE O NOME
+                    String e_Nome = Consola.lerString("Escreva o Nome da Empresa: ");
+                    //PEDE A MORADA
+                    String e_Morada = Consola.lerString("Escreva a Morada da Empresa: ");
+                    //PEDE O NIF
+                    int e_NIF = Consola.lerInt("Digite o NIF da Empresa: ", 100000000, 1000000000);
+                    //CRIA OBJETO DO CONSTRUTOR COM OS ATRIBUTOS PEDIDOS ACIMA         
+                    e[e_counter] = new Empresa(e_NIF,e_Nome,e_Morada);
+                    e_counter ++;
+                    break;
+                    
+                case 2:
+                    
+                    int find_NIF = Consola.lerInt("Digite o NIF da Empresa que pretende: ",100000000, 1000000000);
         
+                    for(int i=0;i<e_counter;i++){
+                        if(e[i].getNIF() == find_NIF){
+                            System.out.println("Nome da Empresa -> " + e[i].getNome());
+                            System.out.println("NIF da Empresa -> " + e[i].getNIF());
+                            System.out.println("Morada da Empresa -> " + e[i].getMorada());
+                            System.out.print("\n"); }
+                        }  
+                    
+                case 3:
+                    break;
+                    
+                default:
+                    break;
+        }
     }
+        
   //--------------------------------------------------------------------------    
 }
