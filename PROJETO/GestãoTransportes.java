@@ -1,21 +1,20 @@
-package gestãotransportes;
+package com.mycompany.gestaotransportes;
 import util.Consola;
 import java.util.Scanner;
-import static util.Consola.sc;
+import java.util.ArrayList;
 
-public class GestãoTransportes {
+public class GestaoTransportes {
     
   public static Scanner sc = new Scanner(System.in);
+
+  ArrayList<Empresa> e = new ArrayList();
+  ArrayList<Motorista> m = new ArrayList();
   
-  static Empresa e[] = new Empresa[100];
-  static Motorista m[] = new Motorista[1000];
-  
-  static int e_counter = 0, m_counter = 0;
   
     public static void main(String[] args) {
        
         int a = 0;
-        
+     
         //LAYOUT DO MENU
         System.out.println("\nBEM-VINDO AO GESTOR DE TRANSPORTES:\n");
         System.out.println("1. Inserir e consultar (através no NIF) todas as empresas registadas");
@@ -33,10 +32,13 @@ public class GestãoTransportes {
             
             switch(opc) {
                 case 1:
-                    manageEmpresa();
+                    GestaoTransportes b = new GestaoTransportes();
+                    b.manageEmpresa();
                     main(args);
+                    
                 case 2:
-                    manageMotorista();
+                    GestaoTransportes c = new GestaoTransportes();
+                    c.manageMotorista();
                     main(args);
                 case 3:
                     System.out.println("opc3");
@@ -99,7 +101,7 @@ public class GestãoTransportes {
     
   //--------------------------------------------------------------------------  
     
-    public static void manageEmpresa(){
+    public void manageEmpresa(){
         
         System.out.println("\n\n");
         System.out.println("1. Criar Empresa");
@@ -119,25 +121,31 @@ public class GestãoTransportes {
                     String e_Morada = Consola.lerString("Escreva a Morada da Empresa: ");
                     //PEDE O NIF
                     int e_NIF = Consola.lerInt("Digite o NIF da Empresa: ", 100000000, 1000000000);
-                    //CRIA OBJETO DO CONSTRUTOR COM OS ATRIBUTOS PEDIDOS ACIMA         
-                    e[e_counter] = new Empresa(e_NIF,e_Nome,e_Morada);
-                    e_counter ++;
+                    //CRIA OBJETO DO CONSTRUTOR COM OS ATRIBUTOS PEDIDOS ACIMA 
+                    e.add(new Empresa(e_NIF, e_Nome, e_Morada));
+                    
+                    //mostra o criado
+                    for (int i=0; i<e.size();i++) {
+                            System.out.println(e.get(i));
+                    }
+//                    System.out.println(Empresa.e.NIF);
+                            
+                    
+                            
                     break;
                     
-                case 2:
-                    
-                    int find_NIF = Consola.lerInt("Digite o NIF da Empresa que pretende: ",100000000, 1000000000);
-        
-                    for(int i=0;i<e_counter;i++){
-                        if(e[i].getNIF() == find_NIF){
-                            System.out.println("Nome da Empresa -> " + e[i].getNome());
-                            System.out.println("NIF da Empresa -> " + e[i].getNIF());
-                            System.out.println("Morada da Empresa -> " + e[i].getMorada());
-                            System.out.print("\n"); }
-                        }  
-                    
-                case 3:
-                    break;
+//                case 2:
+//                    int find_NIF = Consola.lerInt("Digite o NIF da Empresa que pretende: ",100000000, 1000000000);
+//                    for(int i=0;i<e_counter;i++){
+//                        if(b == find_NIF){
+//                            System.out.println("Nome da Empresa -> " + e[i].getNome());
+//                            System.out.println("NIF da Empresa -> " + e[i].getNIF());
+//                            System.out.println("Morada da Empresa -> " + e[i].getMorada());
+//                            System.out.print("\n"); }
+//                        }  
+//                    
+//                case 3:
+//                    break;
                     
                 default:
                     break;
@@ -146,7 +154,7 @@ public class GestãoTransportes {
     
     //--------------------------------------------------------------------------  
     
-    public static void manageMotorista(){
+    public void manageMotorista(){
         
         System.out.println("\n\n");
         System.out.println("1. Criar Motorista");
@@ -187,23 +195,22 @@ public class GestãoTransportes {
                     
                     String m_Data = "" + dia +"/"+ mes +"/"+ ano;
                     
-                    //CRIA OBJETO DO CONSTRUTOR COM OS ATRIBUTOS PEDIDOS ACIMA         
-                    m[m_counter] = new Motorista(m_NIF, m_Nome, m_Morada, m_Telefone,m_Habilitação, m_Empresa, m_Data);
-                    m_counter ++;
-                    System.out.println(m_Data);
+                    //CRIA OBJETO DO CONSTRUTOR COM OS ATRIBUTOS PEDIDOS ACIMA
+                     m.add(new Motorista(m_NIF, m_Nome, m_Morada, m_Telefone,m_Habilitação, m_Empresa, m_Data));
                     break;
                 case 2:
-                    int find_NIF = Consola.lerInt("Digite o NIF do Motorista que pretende: ",100000000, 1000000000);
-                    for(int i=0;i<m_counter;i++){
-                        if(m[i].getNIF() == find_NIF){
-                            System.out.println("Nome do Motorista -> " + m[i].getNome());
-                            System.out.println("NIF do Motorista -> " + m[i].getNIF());
-                            System.out.println("Morada do Motorista -> " + m[i].getMorada());
-                            System.out.println("Telefone do Motorista -> " + m[i].getTelefone());
-                            System.out.println("Empresa do Motorista -> " + m[i].getEmpresa());
-                            System.out.println("Data de nascimento do Motorista -> " + m[i].getData());
-                            System.out.println("Habilitação do Motorista -> " + m[i].getHabilitação());
-                            System.out.print("\n"); }
+//                    int find_NIF = Consola.lerInt("Digite o NIF do Motorista que pretende: ",100000000, 1000000000);
+//                    for(int i=0;i<m_counter;i++){
+//                        if(m[i].getNIF() == find_NIF){
+//                            System.out.println("Nome do Motorista -> " + m[i].getNome());
+//                            System.out.println("NIF do Motorista -> " + m[i].getNIF());
+//                            System.out.println("Morada do Motorista -> " + m[i].getMorada());
+//                            System.out.println("Telefone do Motorista -> " + m[i].getTelefone());
+//                            System.out.println("Empresa do Motorista -> " + m[i].getEmpresa());
+//                            System.out.println("Data de nascimento do Motorista -> " + m[i].getData());
+//                            System.out.println("Habilitação do Motorista -> " + m[i].getHabilitação());
+//                            System.out.print("\n"); }
+                    break;
                         }  
                     
                 case 3:
