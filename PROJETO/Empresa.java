@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package gestãotransportes;
+package com.mycompany.gestaotransportes;
+
+
 
 /**
  *
@@ -10,15 +8,17 @@ package gestãotransportes;
  */
 
     public class Empresa {
-
+        
     //ATRIBUTOS
     private int NIF;
     private String nome;
     private String  morada;
-
+    
+    
+    
     //CONSTRUTOR
     public  Empresa(int NIF, String nome, String  morada){
-
+        
         this.NIF = NIF;
         this.nome = nome;
         this.morada = morada;
