@@ -1,13 +1,32 @@
 package com.mycompany.gestaotransportes;
 
-public class Motorista {
+import java.io.Serializable;
+import util.Ficheiro;
+
+/**
+ *
+ * @author Francisco Mendes e Francisco Chen
+ */
+public class Motorista implements Serializable {
     
     //ATRIBUTOS
     private int NIF, Telefone;
-    private String Nome, Morada, Data, Empresa, Habilitação;
+    private String Nome, Morada, Data, Empresa, Habilitação,Disponibilidade;
 
     //CONSTRUTOR
-    public  Motorista(int NIF, String Nome, String  Morada, int Telefone, String Habilitação, String Empresa, String Data){
+
+    /**
+     *
+     * @param NIF
+     * @param Nome
+     * @param Morada
+     * @param Telefone
+     * @param Habilitação
+     * @param Empresa
+     * @param Data
+     * @param Disponibilidade
+     */
+    public  Motorista(int NIF, String Nome, String  Morada, int Telefone, String Habilitação, String Empresa, String Data,String Disponibilidade){
 
         this.NIF = NIF;
         this.Nome = Nome;
@@ -16,55 +35,78 @@ public class Motorista {
         this.Habilitação = Habilitação;
         this.Empresa = Empresa;
         this.Data = Data;
+        this.Disponibilidade = Disponibilidade;
     }
 
     /**
-     * @return the NIF
+     * Método para mostrar os atributos todos de uma vez
+     */
+    public void mostrarDados(){
+        System.out.println("NIF: "+getNIF());
+        System.out.println("Nome: "+getNome());
+        System.out.println("Morada: "+getMorada());
+        System.out.println("Empresa: "+getEmpresa());
+        System.out.println("Telefone: "+getTelefone());
+        System.out.println("Habilitação: "+getHabilitação());
+        System.out.println("Data: "+getData());
+        System.out.println("Disponibilidade: "+getDisponibilidade());
+    }
+    
+    
+    /**
+     * @return NIF
      */
     public int getNIF() {
         return NIF;
     }
 
     /**
-     * @return the Telefone
+     * @return Telefone
      */
     public int getTelefone() {
         return Telefone;
     }
 
     /**
-     * @return the Habilitação
+     * @return Habilitação
      */
     public String getHabilitação() {
         return Habilitação;
     }
 
     /**
-     * @return the Nome
+     * @return Nome
      */
     public String getNome() {
         return Nome;
     }
 
     /**
-     * @return the Morada
+     * @return Morada
      */
     public String getMorada() {
         return Morada;
     }
 
     /**
-     * @return the Data
+     * @return Data
      */
     public String getData() {
         return Data;
     }
 
     /**
-     * @return the Empresa
+     * @return Empresa
      */
     public String getEmpresa() {
         return Empresa;
+    }
+    
+    /**
+     * @return Disponibilidade
+     */
+    public String getDisponibilidade() {
+        return Disponibilidade;
     }
     
 }
